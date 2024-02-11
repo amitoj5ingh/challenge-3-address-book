@@ -16,6 +16,8 @@ classDiagram
         + searchByName(name string) Contact
         + removeContact(name string) void
         + viewContacts() Contact[]
+        + doesNumberExist(phoneNumber string) boolean
+        + doesEmailExist(email string) boolean
     }
     class AddressBookPrinter {
         + printContacts(addressBook AddressBook)$ void
