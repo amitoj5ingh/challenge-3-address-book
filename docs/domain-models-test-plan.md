@@ -1,9 +1,16 @@
-# Domain Models, Class Diagrams and Test Plan
+# User Stories and Test Plan
 
 ---
 
 ## User story 1
 As a user, I want to be able to add a contact to the address book, so that I can save that contact for the future.
+
+## Tests
+1. When addContact is called, the length of the contacts array should increase by 1.
+2. When addContact is called, the last element of the contacts array should be the contact that was added.
+3. The name of the contact is not null.
+4. If the phone number already exists in the address book, the contact should not be added.
+5. If the email already exists in the address book, the contact should not be added.
 
 ## User story 2
 As a user, I want to be able to search for a contact by name, so that I can find the contact I am looking for.
