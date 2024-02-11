@@ -159,4 +159,44 @@ public class AddressBookTest {
         }
     }
 
+    @Nested
+    @DisplayName("AddressBook removeContact tests")
+    class AddressBookRemoveContactTests {
+        @Test
+        @DisplayName("Test contacts array length decreases by 1 when removeContact is called")
+        void testNameArrayLengthDecreased() {
+            // Arrange
+            AddressBook addressBook = new AddressBook();
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            addressBook.addContact(contact);
+
+            // Act
+            addressBook.removeContact("Example Person");
+
+            // Assert
+            assertEquals(0, addressBook.contacts.size());
+        }
+
+        @Test
+        @DisplayName("Test contact removed by removeContact is no longer in contacts array")
+        void testContactRemovedIsNotInArray() {
+            // Arrange
+            AddressBook addressBook = new AddressBook();
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            addressBook.addContact(contact);
+
+            // Act
+            addressBook.removeContact("Example Person");
+
+            // Assert
+            assertEquals(null, addressBook.searchByName("Example Person"));
+        }
+    }
+
 }

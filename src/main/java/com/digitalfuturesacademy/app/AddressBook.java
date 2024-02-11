@@ -47,4 +47,9 @@ public class AddressBook {
         }
         return null;
     }
+
+    public void removeContact(String name) {
+        Contact contact = searchByName(name);
+        contacts.remove(contact);
+    }
 }

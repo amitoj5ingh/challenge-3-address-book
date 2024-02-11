@@ -23,6 +23,10 @@ As a user, I want to be able to search for a contact by name, so that I can find
 ## User story 3
 As a user, I want to be able to remove a contact from the address book, so that it won't save a contact that I don't need.
 
+## Tests
+1. When removeContact is called, the length of the contacts array should decrease by 1.
+2. When removeContact is called, the contact that was removed should no longer be in the contacts array.
+
 ## User story 4
 As a user, I want to be able to edit the details of a contact, so that I can keep the contact information up to date.
 
