@@ -15,6 +15,11 @@ As a user, I want to be able to add a contact to the address book, so that I can
 ## User story 2
 As a user, I want to be able to search for a contact by name, so that I can find the contact I am looking for.
 
+## Tests
+1. When searchByName is called, the contact with the corresponding name should be returned.
+2. If the name passed to searchByName does not exist in the address book, null should be returned.
+3. If contacts array is empty, null should be returned.
+
 ## User story 3
 As a user, I want to be able to remove a contact from the address book, so that it won't save a contact that I don't need.
 

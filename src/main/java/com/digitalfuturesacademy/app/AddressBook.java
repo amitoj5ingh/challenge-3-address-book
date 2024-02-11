@@ -38,4 +38,13 @@ public class AddressBook {
         }
         return false;
     }
+
+    public Contact searchByName(String name) {
+        for(Contact contact : contacts) {
+            if(contact.getName().equals(name)) {
+                return contact;
+            }
+        }
+        return null;
+    }
 }
