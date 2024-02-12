@@ -52,4 +52,8 @@ public class AddressBook {
         Contact contact = searchByName(name);
         contacts.remove(contact);
     }
+
+    public ArrayList<Contact> viewContacts() {
+        return contacts;
+    }
 }

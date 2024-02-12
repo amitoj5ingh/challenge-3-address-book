@@ -199,4 +199,39 @@ public class AddressBookTest {
         }
     }
 
+    @Nested
+    @DisplayName("AddressBook viewContacts tests")
+    class AddressBookViewContactsTests {
+        @Test
+        @DisplayName("Test viewContacts returns contacts array")
+        void testViewContactsReturnsContactsArray() {
+            // Arrange
+            AddressBook addressBook = new AddressBook();
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            addressBook.addContact(contact);
+            Contact contact2 = mock(Contact.class);
+            when(contact2.getName()).thenReturn("Example Person 2");
+            when(contact2.getEmail()).thenReturn("example2@email.com");
+            when(contact2.getNumber()).thenReturn("07987654321");
+            addressBook.addContact(contact2);
+
+            // Act
+            // Assert
+            assertEquals(addressBook.contacts, addressBook.viewContacts());
+        }
+
+        @Test
+        @DisplayName("Test viewContacts returns empty array when contacts array is empty")
+        void testViewContactsReturnsEmptyArrayWhenContactsArrayIsEmpty() {
+            // Arrange
+            AddressBook addressBook = new AddressBook();
+
+            // Act
+            // Assert
+            assertEquals(0, addressBook.viewContacts().size());
+        }
+    }
 }

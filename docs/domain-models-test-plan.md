@@ -39,5 +39,9 @@ As a user, I want to be able to edit the details of a contact, so that I can kee
 ## User story 5
 As a user, I want to be able to view a list of all the contacts in the address book, so that I can see all the contacts I have saved.
 
+## Tests
+1. When viewContacts is called, the contacts array should be returned.
+2. If the contacts array is empty, an empty array should be returned.
+
 ## User story 6
 As a user, I want to be able to interact with the application using a console interface, so that I can use the different features of the application and see the results.
