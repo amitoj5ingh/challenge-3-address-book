@@ -110,6 +110,30 @@ public class AddressBookTest {
                 addressBook.addContact(duplicateContact);
             });
         }
+
+        // Gen AI has been used to help write the following
+        @Test
+        @DisplayName("Test addContact throws IllegalArgumentException when the duplicate email has different case")
+        void testAddContactThrowsIllegalArgumentExceptionWhenDuplicateEmailHasDifferentCase() {
+            // Arrange
+            AddressBook addressBook = new AddressBook();
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            Contact duplicateContact = mock(Contact.class);
+            when(duplicateContact.getName()).thenReturn("Example Person 2");
+            when(duplicateContact.getEmail()).thenReturn("Example@email.com");
+            when(duplicateContact.getNumber()).thenReturn("07123456789");
+
+            // Act
+            addressBook.addContact(contact);
+
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> {
+                addressBook.addContact(duplicateContact);
+            });
+        }
     }
 
     @Nested
