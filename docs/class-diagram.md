@@ -17,7 +17,7 @@ classDiagram
         + doesEmailExist(email string) boolean
     }
     class AddressBookPrinter {
-        + printContacts(addressBook AddressBook)$ void
+        + printContacts(contacts Contact[])$ void
     }
     class Contact {
         - name string

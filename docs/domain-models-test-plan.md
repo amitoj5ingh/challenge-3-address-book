@@ -45,3 +45,13 @@ As a user, I want to be able to view a list of all the contacts in the address b
 
 ## User story 6
 As a user, I want to be able to interact with the application using a console interface, so that I can use the different features of the application and see the results.
+
+## Tests
+1. When showMenu is called the menu should be printed to the console.
+2. When the user selects add contact from the menu and enters the details of the contact, the addContact function should be called. 
+3. When the user selects search for contact from the menu and enters the name, the searchByName function should be called. 
+4. When the user selects remove contact from the menu, and enters the name, the removeContact function should be called. 
+5. When the user selects edit contact from the menu and enters the details, the editContact function should be called. 
+6. When the user selects view contacts from the menu, the viewContacts function should be called. 
+7. When the viewContacts function is called, the printContacts function should be called with the contacts that were returned. 
+8. When the searchByName function is called, the printContact function should be called with the contact that was returned.
