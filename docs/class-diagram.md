@@ -6,9 +6,6 @@ title: Address Book
 ---
 
 classDiagram
-    Contact <|-- ContactPrinter
-    Contact <|-- ContactEditor
-    AddressBook <|-- AddressBookPrinter
     class AddressBook {
         - contacts Contact[]
         + AddressBook()
@@ -35,9 +32,9 @@ classDiagram
         + setEmail(email string) void
     }
     class ContactPrinter {
-        - printContact(contact Contact)$ void
+        + printContact(contact Contact)$ void
     }
     class ContactEditor {
-        - editContact(contact Contact, name string, phoneNumber string, email string) void
+        + editContact(addressBook AddressBook, contact Contact,\n name string, phoneNumber string, email string)$ void
     }
 ```

@@ -30,6 +30,12 @@ As a user, I want to be able to remove a contact from the address book, so that 
 ## User story 4
 As a user, I want to be able to edit the details of a contact, so that I can keep the contact information up to date.
 
+## Tests
+1. When editContact is called with a new name, the contact should be updated with the new details. 
+2. If the name passed to editContact is null, the contact should not be updated. 
+3. If the phone number passed to editContact already exists, the contact should not be updated. 
+4. If the email passed to editContact already exists, the contact should not be updated.
+
 ## User story 5
 As a user, I want to be able to view a list of all the contacts in the address book, so that I can see all the contacts I have saved.
 
