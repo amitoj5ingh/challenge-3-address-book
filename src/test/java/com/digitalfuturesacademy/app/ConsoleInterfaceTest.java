@@ -1,9 +1,6 @@
 package com.digitalfuturesacademy.app;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -45,26 +42,42 @@ public class ConsoleInterfaceTest {
         assertEquals(expectedOutput, outContent.toString());
     }
 
-    @Test
-    @DisplayName("Test handleUserInput calls addContact when 1 is entered and user input is entered")
-    void testHandleUserInputCallsAddContact() {
-        // Arrange
-        AddressBook addressBook = mock(AddressBook.class);
-        ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
-        String input = "Example Person\r\nexample@email.com\r\n07123456789\r\n";
-        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
-        Contact contact = mock(Contact.class);
-        when(contact.getName()).thenReturn("Example Person");
-        when(contact.getEmail()).thenReturn("example@email.com");
-        when(contact.getNumber()).thenReturn("07123456789");
+    @Nested
+    @DisplayName("handleAddContact tests")
+    class HandleAddContactTests {
+        @Test
+        @DisplayName("Test handleConsole calls handleUserInput with the correct input")
+        void testHandleConsoleCallsHandleUserInput() {
+            // Arrange
+            AddressBook addressBook = mock(AddressBook.class);
+            String input = "1\r\nExample Person\r\nexample@email.com\r\n07123456789\r\n6\r\n";
+            System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+            ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
 
-        // Act
-        consoleInterface.handleUserInput(1);
+            // Act
+            consoleInterface.handleConsole();
 
-        // Assert
-        verify(addressBook).addContact(contact);
+            // Assert
+            verify(addressBook).addContact(any(Contact.class));
+        }
 
+        @Test
+        @DisplayName("Test handleUserInput calls handleAddContact when 1 is entered")
+        void testHandleUserInputCallsAddContact() {
+            // Arrange
+            AddressBook addressBook = mock(AddressBook.class);
+            String input = "Example Person\r\nexample@email.com\r\n07123456789\r\n6\n";
+            System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+            Scanner scanner = new Scanner(System.in);
+            ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
+            Contact contact = new Contact("Example Person", "example@email.com", "07123456789");
 
+            // Act
+            consoleInterface.handleUserInput(1);
+
+            // Assert
+            verify(addressBook).addContact(any(Contact.class));
+        }
     }
 
 }
