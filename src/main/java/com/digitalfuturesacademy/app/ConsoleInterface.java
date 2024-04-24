@@ -40,7 +40,7 @@ public class ConsoleInterface {
                 handleConsole();
                 break;
             case 5:
-                // searchContacts
+                handleSearchContacts();
                 handleConsole();
                 break;
             case 6:
@@ -71,6 +71,19 @@ public class ConsoleInterface {
         String phone = scanner.nextLine();
         Contact contact = new Contact(name, email, phone);
         addressBook.addContact(contact);
+    }
+
+    public void handleSearchContacts() {
+        System.out.println("Enter contact name: ");
+        String name = scanner.nextLine();
+        Contact contact = addressBook.searchByName(name);
+        if (contact != null) {
+            System.out.println("Name: " + contact.getName());
+            System.out.println("Email: " + contact.getEmail());
+            System.out.println("Phone: " + contact.getNumber());
+        } else {
+            System.out.println("Contact not found");
+        }
     }
 
     public static void main(String[] args) {
