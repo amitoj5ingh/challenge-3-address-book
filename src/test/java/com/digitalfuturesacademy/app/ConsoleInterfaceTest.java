@@ -105,4 +105,29 @@ public class ConsoleInterfaceTest {
         }
     }
 
+    @Nested
+    @DisplayName("handleRemoveContact tests")
+    class HandleRemoveContactTests {
+        @Test
+        @DisplayName("Test handleUserInput calls handleRemoveContact with the correct input")
+        void testHandleUserInputCallsHandleRemoveContact() {
+            // Arrange
+            AddressBook addressBook = mock(AddressBook.class);
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            addressBook.addContact(contact);
+            String input = "Example Person\r\n6\r\n";
+            System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+            ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
+
+            // Act
+            consoleInterface.handleUserInput(3);
+
+            // Assert
+            verify(addressBook).removeContact("Example Person");
+        }
+    }
+
 }

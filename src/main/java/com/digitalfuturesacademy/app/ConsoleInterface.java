@@ -32,7 +32,7 @@ public class ConsoleInterface {
                 handleConsole();
                 break;
             case 3:
-                // removeContact
+                handleRemoveContact();
                 handleConsole();
                 break;
             case 4:
@@ -84,6 +84,12 @@ public class ConsoleInterface {
         } else {
             System.out.println("Contact not found");
         }
+    }
+
+    public void handleRemoveContact() {
+        System.out.println("Enter contact name: ");
+        String name = scanner.nextLine();
+        addressBook.removeContact(name);
     }
 
     public static void main(String[] args) {

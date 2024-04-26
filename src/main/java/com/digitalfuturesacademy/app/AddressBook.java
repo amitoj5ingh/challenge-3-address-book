@@ -50,6 +50,9 @@ public class AddressBook {
 
     public void removeContact(String name) {
         Contact contact = searchByName(name);
+        if (contact == null) {
+            throw new IllegalArgumentException("Contact not found");
+        }
         contacts.remove(contact);
     }
 
