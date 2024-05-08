@@ -28,7 +28,7 @@ public class ConsoleInterface {
                 handleConsole();
                 break;
             case 2:
-                // editContact
+                handleEditContact();
                 handleConsole();
                 break;
             case 3:
@@ -90,6 +90,19 @@ public class ConsoleInterface {
         System.out.println("Enter contact name: ");
         String name = scanner.nextLine();
         addressBook.removeContact(name);
+    }
+
+    public void handleEditContact() {
+        System.out.println("Enter current contact name: ");
+        String oldName = scanner.nextLine();
+        System.out.println("Enter new contact name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter new contact email: ");
+        String email = scanner.nextLine();
+        System.out.println("Enter new contact phone: ");
+        String phone = scanner.nextLine();
+        Contact contact = addressBook.searchByName(oldName);
+        ContactEditor.editContact(addressBook, contact, name, email, phone);
     }
 
     public static void main(String[] args) {
