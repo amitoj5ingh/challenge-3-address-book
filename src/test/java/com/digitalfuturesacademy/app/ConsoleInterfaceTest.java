@@ -4,6 +4,8 @@ import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -176,6 +178,28 @@ public class ConsoleInterfaceTest {
 
             // Assert
             verify(addressBook).viewContacts();
+        }
+
+        @Test
+        @DisplayName("Test handleViewContacts displays numbered contacts")
+        void testHandleViewContactsDisplaysNumberedContacts() {
+            // Arrange
+            AddressBook addressBook = mock(AddressBook.class);
+            Contact contact = mock(Contact.class);
+            when(contact.getName()).thenReturn("Example Person");
+            when(contact.getEmail()).thenReturn("example@email.com");
+            when(contact.getNumber()).thenReturn("07123456789");
+            when(addressBook.viewContacts()).thenReturn(new ArrayList<>(Collections.singletonList(contact)));
+            String input = "6\r\n";
+            System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+            ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
+
+            // Act
+            consoleInterface.handleUserInput(4);
+
+            // Assert
+            String expectedOutput = "1. \r\nName: Example Person\r\nEmail: example@email.com\r\nPhone: 07123456789\r\n1. Add contact\r\n2. Edit contact\r\n3. Delete contact\r\n4. View all contacts\r\n5. Search contacts\r\n6. Exit\r\nEnter your choice: \r\n";
+            assertEquals(expectedOutput, outContent.toString());
         }
     }
 

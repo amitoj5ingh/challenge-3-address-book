@@ -54,7 +54,7 @@ As a user, I want to be able to interact with the application using a console in
 4. When the user selects remove contact from the menu, and enters the name, the removeContact function should be called. 
 5. When the user selects edit contact from the menu and enters the details, the editContact function should be called. 
 6. When the user selects view contacts from the menu, the viewContacts function should be called. 
-7. When the viewContacts function is called, the printContacts function should be called with the contacts that were returned. 
+7. When the handleViewContacts function is called, the contacts should be numbered and printed to the console.
 8. When the searchByName function is called, the printContact function should be called with the contact that was returned.
 
 
