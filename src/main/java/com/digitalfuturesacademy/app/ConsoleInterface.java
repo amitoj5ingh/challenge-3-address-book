@@ -1,5 +1,6 @@
 package com.digitalfuturesacademy.app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleInterface {
@@ -36,7 +37,7 @@ public class ConsoleInterface {
                 handleConsole();
                 break;
             case 4:
-                // viewContacts
+                handleViewContacts();
                 handleConsole();
                 break;
             case 5:
@@ -103,6 +104,18 @@ public class ConsoleInterface {
         String phone = scanner.nextLine();
         Contact contact = addressBook.searchByName(oldName);
         ContactEditor.editContact(addressBook, contact, name, email, phone);
+    }
+
+    public void handleViewContacts() {
+        ArrayList<Contact> contacts = addressBook.viewContacts();
+        int x = 1;
+        for (Contact contact : contacts) {
+            System.out.println(x + ". ");
+            System.out.println("Name: " + contact.getName());
+            System.out.println("Email: " + contact.getEmail());
+            System.out.println("Phone: " + contact.getNumber());
+            x++;
+        }
     }
 
     public static void main(String[] args) {

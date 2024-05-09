@@ -159,4 +159,24 @@ public class ConsoleInterfaceTest {
         }
     }
 
+    @Nested
+    @DisplayName("handleViewContacts tests")
+    class HandleViewContactsTests {
+        @Test
+        @DisplayName("Test handleUserInput calls handleViewContacts")
+        void testHandleUserInputCallsHandleViewContacts() {
+            // Arrange
+            AddressBook addressBook = mock(AddressBook.class);
+            String input = "6\r\n";
+            System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+            ConsoleInterface consoleInterface = new ConsoleInterface(addressBook, scanner);
+
+            // Act
+            consoleInterface.handleUserInput(4);
+
+            // Assert
+            verify(addressBook).viewContacts();
+        }
+    }
+
 }
